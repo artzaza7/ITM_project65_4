@@ -8,7 +8,7 @@ def openConnection():
     connection = pymysql.connect(host='localhost',
                                  user='root',
                                  password='',
-                                 database='', # Name of database
+                                 database='itm_database', # Name of database
                                  charset='utf8',
                                  cursorclass=pymysql.cursors.DictCursor)
     return connection
