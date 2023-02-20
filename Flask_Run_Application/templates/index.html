@@ -9,9 +9,37 @@
         index
         {% endblock %}
     </title>
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link rel="stylesheet" href="/static/style/style.css">
 </head>
 <body>
+    {% block navbar %}
+    <section id="header">
+        <a href="#"><img src="/static/webAccessories/logo.png" alt=""></a>
+        <div>
+            <ul id="navbar">
+                <li><a class="active" href="#">หน้าหลัก</a></li>
+                <li><a href="#">ค้นหา</a></li>
+                <li><a href="#">ร้านค้า</a></li>
+                <li><a href="#">เกี่ยวกับเรา</a></li>
+                <li><a href="#"><i class="fa-solid fa-user"></i></a></li>
+            </ul>
+        </div>
+    </section>
+    {% endblock %}
+
+
     {% block body %}
+
+    <section id="hero">
+        <h4>ค้นหาเสื้อผ้าที่ใช่ในแบบที่คุณชอบด้วย</h4>
+        <h1>Reverse Image Search</h1>
+        <a href="search.html">
+        <button>Search Now</button>
+    </a>
+    </section>
+    
     {% endblock %}
 </body>
 </html>
