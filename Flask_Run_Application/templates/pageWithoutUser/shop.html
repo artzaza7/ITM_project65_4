@@ -1,0 +1,101 @@
+{% extends "index.html" %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}
+        ITM | Reverse Image Search | Shopping
+        {% endblock %}
+    </title>
+</head>
+<body>
+    {% block navbar %}
+    <section id="header">
+        <a href="#"><img src="/static/webAccessories/logo.png" alt=""></a>
+        <div>
+            <ul id="navbar">
+                <li><a href="/">หน้าหลัก</a></li>
+                <li><a href="/search">ค้นหา</a></li>
+                <li><a class="active" href="/shopping">ร้านค้า</a></li>
+                <li><a href="#">เกี่ยวกับเรา</a></li>
+                <li><a href="#"><i class="fa-solid fa-user"></i></a></li>
+            </ul>
+        </div>
+    </section>
+    {% endblock %}
+
+    {% block body %}
+    <section id="product1" class="section-p1">
+        <h2>Summer Clothing Collection</h2>
+        <p>ต้อนรับหน้าร้อนด้วยคอลเล็กชันนี้</p>
+        <div class="pro-container">
+            <div class="pro">
+                <img src="../../static/img/products/f1.jpg" alt="">
+                <div class="des">
+                    <span>UNIQLO</span>
+                    <h5>Flower Shirt</h5>
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h4>990 THB</h4>
+                </div>
+            </div>
+            <div class="pro">
+                <img src="../../static/img/products/n6.jpg" alt="">
+                <div class="des">
+                    <span>Lacoste</span>
+                    <h5>Men’s Slim Fit Stretch Cotton Shorts</h5>
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h4>2,340 THB</h4>
+                </div>
+            </div>
+            <div class="pro">
+                <img src="../../static/img/products/s1.jpg" alt="">
+                <div class="des">
+                    <span>NIKE</span>
+                    <h5>Jordan 1 Retro High Travis Scott</h5>
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h4>25,390 THB</h4>
+                </div>
+            </div>
+            <div class="pro">
+                <img src="../../static/img/products/f6.jpg" alt="">
+                <div class="des">
+                    <span>CARNIVAL</span>
+                    <h5>SPY x FAMILY T-Shrit</h5>
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h4>3,568 THB</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endblock %}
+
+</body>
+</html>

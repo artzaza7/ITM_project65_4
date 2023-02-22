@@ -1,0 +1,195 @@
+{% extends "index.html" %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}
+        ITM | Reverse Image Search | Search
+        {% endblock %}
+    </title>
+    {% block css %}
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link rel="stylesheet" href="static/style/searchPagestyle.css">
+    {% endblock %}
+</head>
+<body>
+
+    {% block navbar %}
+    <section id="header">
+        <a href="#"><img src="/static/webAccessories/logo.png" alt=""></a>
+        <div>
+            <ul id="navbar">
+                <li><a href="/">หน้าหลัก</a></li>
+                <li><a class="active" href="/search">ค้นหา</a></li>
+                <li><a href="/shopping">ร้านค้า</a></li>
+                <li><a href="#">เกี่ยวกับเรา</a></li>
+                <li><a href="#"><i class="fa-solid fa-user"></i></a></li>
+            </ul>
+        </div>
+    </section>
+    {% endblock %}
+
+    {% block body %}
+    <section id="hero">
+        <h2>Reverse Image Search</h2>
+        <p class="lead">ใส่รูปเสื้อที่ต้องการหาผลลัพธ์ที่ใกล้เคียง</p>
+
+        <!-- Upload  -->
+        <form id="file-upload-form" class="uploader">
+            <input id="file-upload" type="file" name="fileUpload" accept="image/*" />
+
+            <label for="file-upload" id="file-drag">
+                <img id="file-image" src="#" alt="Preview" class="hidden">
+                <div id="start">
+                    <i class="fa fa-download" aria-hidden="true"></i>
+                    <div>Select a file or drag here</div>
+                    <div id="notimage" class="hidden">Please select an image</div>
+                    <span id="file-upload-btn" class="btn btn-primary">Select a file</span>
+                </div>
+                <div id="response" class="hidden">
+                    <div id="messages"></div>
+                    <button>Search</button>
+
+                </div>
+            </label>
+        </form>
+    </section>
+    <section id="product1" class="section-p1">
+        <p>ผลลัพธ์การค้นหา</p>
+        <div class="pro-container">
+            <div class="pro">
+                <img src="../../static/img/products/ex1.jpg" alt="">
+                <div class="des">
+                    <span>ยี่ห้อ</span>
+                    <h5>ชื่อ</h5>
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h4>ราคา</h4>
+                </div>
+            </div>
+            <div class="pro">
+                <img src="../../static/img/products/ex1.jpg" alt="">
+                <div class="des">
+                    <span>ยี่ห้อ</span>
+                    <h5>ชื่อ</h5>
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h4>ราคา</h4>
+                </div>
+            </div>
+            <div class="pro">
+                <img src="../../static/img/products/ex1.jpg" alt="">
+                <div class="des">
+                    <span>ยี่ห้อ</span>
+                    <h5>ชื่อ</h5>
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h4>ราคา</h4>
+                </div>
+            </div>
+            <div class="pro">
+                <img src="../../static/img/products/ex1.jpg" alt="">
+                <div class="des">
+                    <span>ยี่ห้อ</span>
+                    <h5>ชื่อ</h5>
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h4>ราคา</h4>
+                </div>
+            </div>
+            <div class="pro">
+                <img src="../../static/img/products/ex1.jpg" alt="">
+                <div class="des">
+                    <span>ยี่ห้อ</span>
+                    <h5>ชื่อ</h5>
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h4>ราคา</h4>
+                </div>
+            </div>
+            <div class="pro">
+                <img src="../../static/img/products/ex1.jpg" alt="">
+                <div class="des">
+                    <span>ยี่ห้อ</span>
+                    <h5>ชื่อ</h5>
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h4>ราคา</h4>
+                </div>
+            </div>
+            <div class="pro">
+                <img src="../../static/img/products/ex1.jpg" alt="">
+                <div class="des">
+                    <span>ยี่ห้อ</span>
+                    <h5>ชื่อ</h5>
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h4>ราคา</h4>
+                </div>
+            </div>
+            <div class="pro">
+                <img src="../../static/img/products/ex1.jpg" alt="">
+                <div class="des">
+                    <span>ยี่ห้อ</span>
+                    <h5>ชื่อ</h5>
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h4>ราคา</h4>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+    {% endblock %}
+
+    {% block script %}
+    <script src="static/javascript/searchScript.js"></script>
+    {% endblock %}
+</body>
+</html>
