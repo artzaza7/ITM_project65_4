@@ -13,9 +13,23 @@ def openConnection():
                                  cursorclass=pymysql.cursors.DictCursor)
     return connection
 # localhost, username, password, database
+
+# =======================================================
+# Without User Login
 @app.route("/")
-def index():
+def indexWithoutUser():
     return render_template('index.html')
+
+@app.route("/shopping")
+def shoppingWithoutUser():
+    return render_template('pageWithoutUser/shop.html')
+
+@app.route("/search")
+def searchWithoutUser():
+    return render_template('pageWithoutUser/search.html')
+
+# =======================================================
+
 
 if __name__ == "__main__":
     app.run(debug=True)
