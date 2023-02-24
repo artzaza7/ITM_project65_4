@@ -17,11 +17,11 @@
 
 - [x] I. วางแผนการทำงานโครงการ
 - [x] II. การออกแบบเว็บไซต์
-- [x] III. การออกแบบฐานข้อมูล 
+- [x] III. การออกแบบฐานข้อมูล **_(อยู่ในกระบวนการ)_** 
 - [x] IV. สร้างฐานข้อมูล **_(อยู่ในกระบวนการ)_** 
 - [x] V. พัฒนาโครงสร้างเว็บไซต์ **_(อยู่ในกระบวนการ)_** 
 - [x] VI. รวบรวม Dataset และ Pre-process **_(อยู่ในกระบวนการ)_** 
-- [ ] VII. Train Model AI / Evaluate
+- [x] VII. Train Model AI / Evaluate **_(อยู่ในกระบวนการ)_** 
 - [ ] VIII. นำ Model AI เข้าเว็บไซต์ 
 - [ ] IX. ทดสอบการทำงานโดยรวม 
 
@@ -72,11 +72,10 @@ Reference ในการจัดทำหน้าเว็บไซต์ (�
 
 <h5 align="center">[...Sign in | Sign up...]</h5>
 
-![Design_SignInUp_1](https://user-images.githubusercontent.com/75871892/219263212-b0f81504-6f37-4e16-ab83-3da693b08fed.jpg)
+![Design_SignIn](https://user-images.githubusercontent.com/75871892/221206698-2d13d472-ce9b-41d1-a809-4c08e58a5c83.jpg)
 
-![Design_SignInUp_2](https://user-images.githubusercontent.com/75871892/219263213-beca4150-4092-4187-8429-dcdd5b816e61.jpg)
+![Design_SignUp](https://user-images.githubusercontent.com/75871892/221206712-2883d9c2-42fa-46f9-a708-491d109bd846.jpg)
 
-![Design_SignInUp_3](https://user-images.githubusercontent.com/75871892/219263206-66788e02-6abc-40e2-95d0-a6716a57cbc8.jpg)
 
 <h5 align="center">[...Admin...]</h5>
 
@@ -86,6 +85,9 @@ Reference ในการจัดทำหน้าเว็บไซต์ (�
 
 ![Design_Admin_3](https://user-images.githubusercontent.com/75871892/219263565-140f8487-71c1-4dbb-a31a-747358fe418b.jpg)
 
+<h5 align="center">[...About Us...]</h5>
+
+![Design_AboutUs](https://user-images.githubusercontent.com/75871892/221206681-55dc512b-e165-45c1-8754-931b8029c750.jpg)
 
 ---
 ##### _3 การออกแบบฐานข้อมูล_
@@ -155,3 +157,7 @@ Code ของเว็บไซค์ อยู่ใน :file_folder: WebProto
 | **Skirt** | 2975 | [Skirt Dataset](https://www.kaggle.com/datasets/kritanjalijain/outfititems) |
 | **Shoe** | 1000 | [Shoe Dataset](https://www.kaggle.com/datasets/hasibalmuzdadid/shoe-vs-sandal-vs-boot-dataset-15k-images) |
 | **Sandal** | 1000 | [Sandal Dataset](https://www.kaggle.com/datasets/hasibalmuzdadid/shoe-vs-sandal-vs-boot-dataset-15k-images) |
+
+---
+##### _7 Train Model AI / Evaluate_
+
