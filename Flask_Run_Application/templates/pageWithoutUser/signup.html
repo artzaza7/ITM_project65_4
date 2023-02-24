@@ -1,0 +1,61 @@
+{% extends "index.html" %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}
+        ITM | Reverse Image Search | SIGN UP
+        {% endblock %}
+    </title>
+    {% block css %}
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link rel="stylesheet" href="../../static/style/singupPagestyle.css">
+    {% endblock %}
+</head>
+
+<body>
+    {% block navbar %}
+    {% endblock %}
+    {% block body %}
+    <div class="container">
+        <div class="title">สร้างบัญชี</div>
+        <div class="content">
+            <form action="login.html">
+                <div class="user-details">
+                    <div class="input-box">
+                        <span class="details">FirstName</span>
+                        <input type="text" placeholder="Enter your name" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Lastname</span>
+                        <input type="text" placeholder="Enter your username" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Email</span>
+                        <input type="text" placeholder="Enter your email" required>
+                    </div>
+
+                    <div class="input-box">
+                        <span class="details">Password</span>
+                        <input type="password" placeholder="Enter your password" required>
+                    </div>
+
+                </div>
+
+                <div class="button">
+                    <input type="submit" value="Register">
+                </div>
+            </form>
+        </div>
+    </div>
+    {% endblock %}
+    {% block footer %}
+    {% endblock %}
+</body>
+
+</html>

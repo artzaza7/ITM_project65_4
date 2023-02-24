@@ -1,0 +1,60 @@
+{% extends "index.html" %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}
+        ITM | Reverse Image Search | SIGN IN
+        {% endblock %}
+    </title>
+    {% block css %}
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link rel="stylesheet" href="../../static/style/loginPagestyle.css">
+    {% endblock %}
+</head>
+
+<body>
+    {% block navbar %}
+    {% endblock %}
+
+    {% block body %}
+    <div id="login-page">
+        <div class="login">
+            <h2 class="login-title">Welcome to ITM Project</h2>
+            <p class="notice">กรุณากรอกข้อมูลในช่องเพื่อเข้าสู่ระบบ</p>
+            <form class="form-login">
+                <label for="email">E-mail</label>
+                <div class="input-email">
+                    <i class="fas fa-envelope icon"></i>
+                    <input type="email" name="email" placeholder="Enter your e-mail" required>
+                </div>
+                <label for="password">Password</label>
+                <div class="input-password">
+                    <i class="fas fa-lock icon"></i>
+                    <input type="password" name="password" placeholder="Enter your password" required>
+                </div>
+                <div class="checkbox">
+                    <!-- <label for="remember">
+                <input type="checkbox" name="remember">
+                Remember me
+              </label> -->
+                </div>
+                <button type="submit"><i class="fas fa-door-open"></i> Login </button>
+            </form>
+            <a href="/sign_up">สร้างบัญชี</a>
+        </div>
+        <div class="background">
+        </div>
+    </div>
+    {% endblock %}
+    {% block footer %}
+    {% endblock %}
+</body>
+
+</html>

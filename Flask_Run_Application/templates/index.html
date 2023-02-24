@@ -1,31 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
         {% block title %}
-        ITM | Reverse Image Search 
+        ITM | Reverse Image Search
         {% endblock %}
     </title>
     {% block css %}
     <link rel="stylesheet" type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
-    <link rel="stylesheet" href="/static/style/style.css">
+    <link rel="stylesheet" href="../static/style/style.css">
     {% endblock %}
 </head>
+
 <body>
     {% block navbar %}
     <section id="header">
-        <a href="#"><img src="/static/webAccessories/logo.png" alt=""></a>
+        <a href="{{url_for('indexWithoutUser')}}"><img src="../static/logo.png" alt=""></a>
         <div>
             <ul id="navbar">
                 <li><a class="active" href="/">หน้าหลัก</a></li>
                 <li><a href="/search">ค้นหา</a></li>
                 <li><a href="/shopping">ร้านค้า</a></li>
                 <li><a href="#">เกี่ยวกับเรา</a></li>
-                <li><a href="#"><i class="fa-solid fa-user"></i></a></li>
+                <!-- <li><a href="#"><i class="fa-solid fa-user"></i></a></li> -->
+                <div class="frame">
+                    <a href="/sign_in"> <button class="custom-btn btn-10">Signin</button> </a>
+                    <a href="/sign_up"> <button class="custom-btn btn-11">Signup</button> </a>
+                </div>
             </ul>
         </div>
     </section>
@@ -46,6 +52,34 @@
 
 
     {% block footer %}
+    <section id="sm-banner" class="section-p1">
+        <div class="banner-box">
+            <h4>ซื้อ 1 แถม 1</h4>
+            <h2>Buy 1 Get 1</h2>
+            <span>เริ่มตั้งแต่ 11 กุมภาพันธ์ 2566 - 28 กุมภาพันธ์ 2566 ทุกสาขา</span>
+
+        </div>
+        <div class="banner-box banner-box2">
+            <h4>คอลเล็กชั่นต้อนรับฤดูฝน!</h4>
+            <h2>Fashion for Songkran Festival</h2>
+            <span>เปิดตัวคอลเล็กชั่นวันที่ 19 มิถุนายน 2566</span>
+        </div>
+    </section>
+    <section id="bannertext">
+        <div class="banner-box ">
+            <h2>พิกัดร้าน</h2>
+            <span>1 Village,Kampangsaen Sub-district,</span>
+            <span>Kampangsaen District,Nakhon Pathom,73140</span>
+        </div>
+        <div class="banner-box banner-box2 ">
+            <h2>Street Wear</h2>
+            <h3>Coming soon...</h3>
+        </div>
+        <div class="banner-box banner-box3 ">
+            <h2>SEOSONAL SALE</h2>
+            <h3>Summer Collection -50% OFF</h3>
+        </div>
+    </section>
     <footer class="section-p1">
         <div class="content">
             <div class="left box">
@@ -73,7 +107,7 @@
             <div class="right box">
                 <div class="topic">Secured Payment Gateways</div>
                 <form action="#">
-                    <img src="img/pay/pay.png" alt="">
+                    <img src="../static/img/pay/pay.png" alt="">
                     <div class="lower">
                         <div class="topic">Follow Us</div>
                         <div class="media-icons">
@@ -95,4 +129,5 @@
     {% endblock %}
 
 </body>
+
 </html>

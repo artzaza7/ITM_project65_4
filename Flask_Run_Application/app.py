@@ -28,6 +28,14 @@ def shoppingWithoutUser():
 def searchWithoutUser():
     return render_template('pageWithoutUser/search.html')
 
+@app.route("/sign_in")
+def signInPage():
+    return render_template('pageWithoutUser/signin.html')
+
+@app.route("/sign_up")
+def signUpPage():
+    return render_template('pageWithoutUser/signup.html')
+
 # =======================================================
 
 
