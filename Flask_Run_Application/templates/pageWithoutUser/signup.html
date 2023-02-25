@@ -25,24 +25,24 @@
     <div class="container">
         <div class="title">สร้างบัญชี</div>
         <div class="content">
-            <form action="login.html">
+            <form action="{{url_for('signUpLogin')}}" method="post">
                 <div class="user-details">
                     <div class="input-box">
                         <span class="details">FirstName</span>
-                        <input type="text" placeholder="Enter your name" required>
+                        <input type="text" placeholder="Enter your name" required name="firstname">
                     </div>
                     <div class="input-box">
                         <span class="details">Lastname</span>
-                        <input type="text" placeholder="Enter your username" required>
+                        <input type="text" placeholder="Enter your username" required name="lastname">
                     </div>
                     <div class="input-box">
                         <span class="details">Email</span>
-                        <input type="text" placeholder="Enter your email" required>
+                        <input type="text" placeholder="Enter your email" required name="email">
                     </div>
 
                     <div class="input-box">
                         <span class="details">Password</span>
-                        <input type="password" placeholder="Enter your password" required>
+                        <input type="password" placeholder="Enter your password" required name="password">
                     </div>
 
                 </div>
