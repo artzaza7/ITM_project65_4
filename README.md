@@ -103,6 +103,9 @@ Prototype 2
 
 ![ER_Diagram_2](https://user-images.githubusercontent.com/75871892/219260027-1fa77d80-f1dd-43c4-b436-b104b5bebe3b.jpg)
 
+Prototype 3
+
+![ER_Diagram_3](https://user-images.githubusercontent.com/75871892/221345499-b73526d5-31cd-4bc9-b7ef-470346545301.jpg)
 
 ---
 ##### _4 สร้างฐานข้อมูล_
@@ -113,6 +116,8 @@ Database (ไฟล์ : itm_database / :file_folder: Database/itm_database.sql
 ![SQL_Image](https://user-images.githubusercontent.com/75871892/218263682-1701a9fe-3509-4062-b6b3-f5b0caac6220.jpg)
 
 ![SQL_Image_2](https://user-images.githubusercontent.com/75871892/219265339-720c756f-f94a-4a83-9a9e-6072a95fcc9a.jpg)
+
+![SQL_Image_3](https://user-images.githubusercontent.com/75871892/221345500-0450f072-0904-408e-9618-f6ec07eec9e6.jpg)
 
 
 ---
@@ -146,6 +151,19 @@ Code ของเว็บไซค์ อยู่ใน :file_folder: WebProto
 <br>
 
 ![Web_7](https://user-images.githubusercontent.com/75871892/219263785-42921148-db69-4e06-9b2a-0e0fceb2bbbd.jpg)
+
+<br>
+
+![Web_8](https://user-images.githubusercontent.com/75871892/221364748-aa5dff43-8d1e-4606-aa13-69a9551d31d7.jpg)
+
+<br>
+
+![Web_9](https://user-images.githubusercontent.com/75871892/221364743-a2c63cd2-4b75-493d-b8b2-7d8a2959e5b1.jpg)
+
+<br>
+
+![Web_10](https://user-images.githubusercontent.com/75871892/221364745-a291654c-957c-45ce-a402-948ff83ef62e.jpg)
+
 
 ---
 ##### _6 รวบรวม Dataset และ Pre-process_
