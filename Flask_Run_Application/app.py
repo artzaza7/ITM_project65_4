@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, session
+from werkzeug.security import generate_password_hash, check_password_hash
 import pymysql
 
 app = Flask(__name__)
@@ -61,18 +62,22 @@ def signInLogin():
         password = request.form['password']
         conn = openConnection()
         cur = conn.cursor()
-        sql = "SELECT * FROM `user` NATURAL JOIN `user_type` WHERE user.user_email = %s AND user.user_password = %s"
-        cur.execute(sql, (email, password))
+        # hashed_password = generate_password_hash(password, method='sha256')
+        # print(hashed_password)
+        # sql = "SELECT * FROM `user` NATURAL JOIN `user_type` WHERE user.user_email = %s AND user.user_password = %s"
+        sql = "SELECT * FROM `user` NATURAL JOIN `user_type` WHERE user.user_email = %s"
+        cur.execute(sql, (email))
         result = cur.fetchone()
 
         userType = result[6]
         conn.close()
-        if result:
+        if result and check_password_hash(result[5], password):
+        # if result :
             session['user'] = result[1]
             if userType == "ADMIN":
                 return redirect(url_for('adminPageUser', userType_name=result[6], user_id=result[1]))
             elif (userType == "USER"):
-                return redirect(url_for('signInPage'))
+                return "USER LOGIN"
         else:
             return redirect(url_for('signInPage'))
     else:
@@ -86,10 +91,11 @@ def signUpLogin():
     email = request.form['email']
     password = request.form['password']
     user = 2
+    hashed_password = generate_password_hash(password, method='sha256')
     conn = openConnection()
     cur = conn.cursor()
     sql = "INSERT INTO `user`(`user_email`, `user_fname`, `user_lname`, `user_password`, `userType_id`) VALUES (%s, %s, %s, %s, %s)"
-    cur.execute(sql, (email, firstname, lastname, password, user))
+    cur.execute(sql, (email, firstname, lastname, hashed_password, user))
     conn.commit()
     conn.close()
     # INSERT INTO `user`(`user_id`, `user_email`, `user_fname`, `user_lname`, `user_password`, `userType_id`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]','[value-6]')
