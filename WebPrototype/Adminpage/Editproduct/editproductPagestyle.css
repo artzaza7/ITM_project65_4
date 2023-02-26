@@ -492,12 +492,12 @@ html {
   }
   .btn-1 {
     background: rgb(6,14,131);
-    background: linear-gradient(0deg, rgb(8, 109, 13) 0%, rgb(11, 135, 50) 100%);
+    background: linear-gradient(0deg, rgb(249, 188, 45) 0%, rgb(232, 177, 38) 100%);
     border: none;
   }
   .btn-1:hover {
      background: rgb(0,3,255);
-     background: linear-gradient(0deg, rgb(5, 62, 7) 0%, rgb(8, 99, 36) 100%);
+     background: linear-gradient(0deg, rgb(237, 160, 44) 0%, rgb(232, 135, 38) 100%);
   }
   footer.sticky-footer {
     position: absolute;

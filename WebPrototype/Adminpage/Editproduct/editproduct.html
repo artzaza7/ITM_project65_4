@@ -12,7 +12,7 @@
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.css'>
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.16/css/dataTables.bootstrap4.css'>
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css'>
-  <link rel="stylesheet" href="addproductPagestyle.css">
+  <link rel="stylesheet" href="editproductPagestyle.css">
 
 </head>
 
@@ -73,13 +73,13 @@
           <div class="admin-product-form-container">
 
             <form action="#" method="post" enctype="multipart/form-data">
-              <h3>add a new product</h3>
-              <input type="text" placeholder="Enter Product number" name="product_number" class="box" required>
-              <input type="text" placeholder="Enter Product name" name="product_name" class="box" required>
-              <input type="number" placeholder="Enter Product price (THB)" name="product_price" class="box" required>
+              <h3>Edit product</h3>
+              <input type="text" placeholder="Product number" name="product_number" class="box" required>
+              <input type="text" placeholder=" Product name" name="product_name" class="box" required>
+              <input type="number" placeholder=" Product price (THB)" name="product_price" class="box" required>
               <br><br>
               <div id="spacecontainer2">
-               <label for="Type">Product Type</label>           
+              <label for="Type">Product Type</label>           
               <label for="Color">Product Color</label>
               </div>
               <div id="spacecontainer">
@@ -100,11 +100,9 @@
                 </select>
               </div>
             </div>
-            
-            <br>
-            
-              <input type="file" accept="image/png, image/jpeg, image/jpg" name="product_image" class="box" required>
-              <input type="submit" class="custom-btn btn-1" name="add_product" value="Add product">
+              <!-- <input type="file" accept="image/png, image/jpeg, image/jpg" name="product_image" class="box" required> -->
+              <br><br>
+              <input type="submit" class="custom-btn btn-1" name="add_product" value="Edit product">
 
             </form>
           </div>
@@ -152,7 +150,7 @@
   <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js'></script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js'></script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.16/js/dataTables.bootstrap4.js'></script>
-  <script src="./addProductPagescript.js"></script>
+  <script src="./editproductPagescript.js"></script>
 
 </body>
 
