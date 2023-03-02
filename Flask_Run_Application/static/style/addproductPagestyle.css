@@ -561,4 +561,72 @@ html {
     background: var(--white);
     text-transform: none;
  } 
+ :root {
+  --background-gradient: linear-gradient(30deg, #f39c12 30%, #f1c40f);
+  --gray: #f7f8f9;
+  --darkgray: #fdfdfd;
+}
+
+select {
+  /* Reset Select */
+  appearance: none;
+  outline: 0;
+ border-color: #000;
+  border-width:2px;
+  box-shadow: none;
+  /* Personalize */
+  flex: 1;
+  padding: 0 1em;
+  color: #0d0d0d;
+  background-color: var(--darkgray);
+  background-image: none;
+  cursor: pointer;
+
+}
+/* Remove IE arrow */
+select::-ms-expand {
+  display: none;
+}
+/* Custom Select wrapper */
+.select {
+  position: relative;
+  display: flex;
+  width: 20em;
+  height: 3em;
+  border-radius: .25em;
+  overflow: hidden;
+}
+/* Arrow */
+.select::after {
+  content: '\25BC';
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 1em;
+  background-color: #34495e;
+  transition: .25s all ease;
+  pointer-events: none;
+}
+/* Transition */
+.select:hover::after {
+  color: #f39c12;
+}
+#spacecontainer{
+  display: flex;
+  justify-content: space-between;
+  background: #ffffff;
+  position: sticky;
+  top: 0;
+}
+
+#spacecontainer2{
+  display: flex;
+  justify-content: space-between;
+  background: #ffffff;
+  list-style: none;
+  padding: 0 110px;
+  position: relative;
+  top: 0;
+}
+
   }

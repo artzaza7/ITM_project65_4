@@ -43,7 +43,8 @@
                     <th>Product Number</th>
                     <th>Product Name</th>
                     <th>Product Image</th>
-
+                    <th>Product Cost</th>
+                    <th>Product Color</th>
                   </tr>
                 </thead>
                 <!-- <tfoot>
@@ -54,34 +55,28 @@
                 </tr>
               </tfoot> -->
                 <tbody>
-                  <tr>
+                  <!-- <tr>
                     <td>1</td>
                     <td>Jordan 1 Retro High Travis Scott</td>
                     <td><img src="../../../../static/img/products/s1.jpg" alt=""></td>
+                    <td>x</td>
+                    <td>x</td>
                     <td><button class="custom-btn btn-1">Edit</button></td>
                     <td><button class="custom-btn btn-2">Delete</button></td>
-                  </tr>
+                  </tr> -->
+                  {% for row in data_product %}
                   <tr>
-                    <td>2</td>
-                    <td>Men’s Slim Fit Stretch Cotton Shorts</td>
-                    <td><img src="../../../../static/img/products/n6.jpg" alt=""></td>
+                    <td>{{row.1}}</td>
+                    <td>{{row.2}}</td>
+                    <td><img src="{{url_for('static', filename='img_product_into_db/' + row.3)}}" alt=""></td>
+                    <td>{{row.4}}</td>
+                    <td>{{row.6}}</td>
                     <td><button class="custom-btn btn-1">Edit</button></td>
                     <td><button class="custom-btn btn-2">Delete</button></td>
                   </tr>
-                  <tr>
-                    <td>3</td>
-                    <td>Flower Shirt</td>
-                    <td><img src="../../../../static/img/products/f1.jpg" alt=""></td>
-                    <td><button class="custom-btn btn-1">Edit</button></td>
-                    <td><button class="custom-btn btn-2">Delete</button></td>
-                  </tr>
-                  <tr>
-                    <td>4</td>
-                    <td>SPY x FAMILY T-Shrit</td>
-                    <td><img src="../../../../static/img/products/f6.jpg" alt=""></td>
-                    <td><button class="custom-btn btn-1">Edit</button></td>
-                    <td><button class="custom-btn btn-2">Delete</button></td>
-                  </tr>
+                  {% endfor %}
+                  
+                  
                 </tbody>
               </table>
             </div>

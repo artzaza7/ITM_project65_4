@@ -1,0 +1,96 @@
+{% extends "index.html" %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}
+        ITM | Reverse Image Search | About Us
+        {% endblock %}
+    </title>
+    {% block css %}
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link rel="stylesheet" href="../static/style/aboutUsstyle.css">
+    <link rel="stylesheet" href="../static/style/style.css">
+    {% endblock %}
+
+</head>
+
+<body>
+    {% block navbar %}
+    <section id="header">
+        <a href="index.html"><img src="logo.png" alt=""></a>
+        <div>
+            <ul id="navbar">
+                <li><a href="/">หน้าหลัก</a></li>
+                <li><a href="/search">ค้นหา</a></li>
+                <li><a href="/shopping">ร้านค้า</li>
+                <li><a class="active" a href="aboutUs.html">เกี่ยวกับเรา</a></li>
+                <!-- <li><a href="login.html"><i class="fa-solid fa-user"></i></a></li> -->
+                <div class="frame">
+                <a href="/sign_in"> <button class="custom-btn btn-10">Signin</button> </a>
+                <a href="/sign_up"> <button class="custom-btn btn-11">Signup</button> </a>
+            </div>
+            </ul>
+        </div>
+    </section>
+    {% endblock %}
+    {% block body %}
+    <div class="about-section">
+        <h1>เกี่ยวกับเรา</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente molestiae non, velit officiis vel assumenda voluptas quae corporis, illum expedita labore eius reprehenderit, quas esse ex modi necessitatibus at fuga?</p>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis eius commodi ab consequuntur earum aliquam. Eius, magni nostrum. Ab sint soluta, rerum alias perferendis fuga tempore magni ducimus error eius.</p>
+      </div>
+    <div class="wrapper">
+        <h1>สมาชิก</h1>
+        <div class="our_team">
+            <div class="team_member">
+              <div class="member_img">
+                 <img src="../../static/img/Teampic/Art.jpg" alt="our_team">
+              </div>
+              <h3>นายชนกานต์ ศรีศรุติพร</h3>
+              <span>Project Manager, Supporter</span>
+            
+            </div>
+            <div class="team_member">
+               <div class="member_img">
+                 <img src="../../static/img/Teampic/Top.png" alt="our_team">
+                 
+              </div>
+              <h3>นายธีรภัทร อักษรนันท์</h3>
+              <span>Frontend Developer</span>
+            
+          </div>
+            <div class="team_member">
+               <div class="member_img">
+                 <img src="../../static/img/Teampic/Jo.png" alt="our_team">
+                
+              </div>
+              <h3>นายปวิช สังข์วารี</h3>
+              <span>AI Developer, Backend Developer</span>
+           
+          </div>
+            <div class="team_member">
+               <div class="member_img">
+                 <img src="../../static/img/Teampic/Arbid.png" alt="our_team">
+            
+              </div>
+              <h3>นายอาบิ๊ด มหากลั่น</h3>
+              <span>Web Design, Supporter</span>
+              
+          </div>  
+        </div>
+    </div>
+    {% endblock %}
+
+    
+    
+    
+</body>
+
+</html>

@@ -6,6 +6,19 @@ app = Flask(__name__)
 app.secret_key = 'itm_group_4'
 # connection Database
 
+#model library
+import os
+os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
+import numpy as np
+import tensorflow as tf
+import tensorflow_hub as hub
+from tensorflow import keras
+from PIL import Image
+from scipy.spatial import distance
+import pandas as pd
+import json
+from werkzeug.utils import secure_filename
+
 
 def openConnection():
     connection = pymysql.connect(host='localhost',
@@ -17,7 +30,39 @@ def openConnection():
                                  )
     return connection
 # localhost, username, password, database
+# =======================================================
+# Model
+model = keras.models.load_model('D:/ITM_Group4_Reverse_Image_Search_for_Online_Shopping/Model/preweight/efficientnet.h5',custom_objects={'KerasLayer':hub.KerasLayer})
+model.summary()
+def extract(file):
+    IMAGE_SHAPE = (224, 224)
+    file = Image.open(file).convert('L').resize(IMAGE_SHAPE)
+    file = np.stack((file,)*3, axis=-1)
+    file = np.array(file)/255.0
+    embedding = model.predict(file[np.newaxis, ...])
+    vgg16_feature_np = np.array(embedding)
+    flattended_feature = vgg16_feature_np.flatten()
+    return flattended_feature
 
+def searchVector(vector):
+    con = openConnection()
+    cur = con.cursor() 
+    cur.execute("Select * From product")
+    rows=cur.fetchall()
+    data = {
+        "id": [], #row[0]
+        "distance": [] #row[4] = vector
+    }
+    df = pd.DataFrame(data)
+    metric = 'cosine'
+    for row in rows:
+        r = np.array(json.loads(row[4]))
+        print(type(r))
+        dc = distance.cdist([vector], [r], metric)[0]
+        df.loc[len(df.index)] = [row[0],dc]
+    return df.sort_values(by=['distance'])
+
+# =======================================================
 # =======================================================
 # Without User Login
 
@@ -45,6 +90,10 @@ def signInPage():
 @app.route("/sign_up")
 def signUpPage():
     return render_template('pageWithoutUser/signup.html')
+
+@app.route("/aboutUs")
+def aboutUsPage():
+    return render_template('pageWithoutUser/aboutUs.html')
 
 # =======================================================
 
@@ -125,7 +174,7 @@ def adminPageProduct(userType_name, user_id):
     if 'user' in session:
         conn = openConnection()
         cur = conn.cursor()
-        sql = "SELECT * FROM `product` NATURAL JOIN product_color NATURAL JOIN product_category"
+        sql = "SELECT * FROM `product` NATURAL JOIN product_category"
         cur.execute(sql)
         result_product = cur.fetchall()
         conn.close()
@@ -137,9 +186,42 @@ def adminPageProduct(userType_name, user_id):
 @app.route("/<string:userType_name>/<string:user_id>/products/addProduct")
 def adminPageAddProduct(userType_name, user_id):
     if 'user' in session:
-        return render_template('pageWithUser/Adminpage/Addproduct/addproduct.html', data_id=user_id, data_userType=userType_name)
+        con = openConnection()
+        cur = con.cursor() 
+        cur.execute("SELECT * FROM `product_category`")
+        product_category_result = cur.fetchall()
+        return render_template('pageWithUser/Adminpage/Addproduct/addproduct.html', data_id=user_id, data_userType=userType_name, product_category = product_category_result)
     else:
         return redirect(url_for('signInPage'))
+
+
+# action adding product
+@app.route("/<string:userType_name>/<string:user_id>/insert_product", methods=['POST'])
+def adminPageActionAddingProduct(userType_name, user_id):
+    if request.method=="POST":
+        product_name = request.form['product_name']
+        product_color = request.form['product_color']
+        product_cost = request.form['product_cost']
+        product_category = request.form['product_category']
+        file_image = request.files['product_image']
+        filename = secure_filename(product_name+".jpg")
+        file_image.save('D:/ITM_Group4_Reverse_Image_Search_for_Online_Shopping/Flask_Run_Application/static/img_product_into_db/'+ filename)
+        # D:\ITM_Group4_Reverse_Image_Search_for_Online_Shopping\Flask_Run_Application\static\img_product_into_db folder for save img for upload
+        folder_path = "D:/ITM_Group4_Reverse_Image_Search_for_Online_Shopping/Flask_Run_Application/static/img_product_into_db/{}".format(filename)
+        feature = extract(folder_path) #r'D:\Arbid_shirt_ (1).jpg'
+        js = json.dumps(feature.tolist())
+        product_vector = js
+
+        con = openConnection()
+        cur = con.cursor()
+        sql="INSERT INTO `product` (`product_name`, `product_img_name`, `product_cost`, `product_vector`, `product_color`, `productCategory_id`) VALUES (%s, %s, %s, %s, %s, %s)"
+        cur.execute(sql,(product_name, filename, product_cost, product_vector, product_color, product_category))
+        con.commit()
+        con.close()
+
+        return redirect(url_for('adminPageProduct', userType_name = userType_name, user_id = user_id))
+
+
 # =======================================================
 
 
