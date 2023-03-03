@@ -1,0 +1,144 @@
+{% extends "index.html" %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}
+        ITM | Reverse Image Search | User Search
+        {% endblock %}
+    </title>
+    {% block css %}
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link rel="stylesheet" href="../../../static/style/searchPagestyle.css">
+    {% endblock %}
+</head>
+<body>
+    {% block navbar %}
+    <section id="header">
+        <a href="/{{data_userType}}/{{data_id}}/shopping"><img src="../static/logo.png" alt=""></a>
+        <div>
+            <ul id="navbar">
+                <!-- <li><a class="active" href="/">หน้าหลัก</a></li> -->
+                <li><a href="/{{data_userType}}/{{data_id}}/shopping">ร้านค้า</a></li>
+                <li><a class="active" href="/{{data_userType}}/{{data_id}}/search">ค้นหา</a></li>
+                <li><a href="/{{data_userType}}/{{data_id}}/about_us">เกี่ยวกับเรา</a></li>
+                <li><a href="/logout">Logout</a></li>
+                <li><a href="#"><i class="fa-solid fa-user"></i></a></li>
+                <!-- <div class="frame">
+                    <a href="/sign_in"> <button class="custom-btn btn-10">Signin</button> </a>
+                    <a href="/sign_up"> <button class="custom-btn btn-11">Signup</button> </a>
+                </div> -->
+            </ul>
+        </div>
+    </section>
+    {% endblock %}
+    {% block body %}
+    <section id="hero">
+        <h2>Reverse Image Search</h2>
+        <p class="lead">ใส่รูปเสื้อที่ต้องการหาผลลัพธ์ที่ใกล้เคียง</p>
+
+        <!-- Upload  -->
+        <form id="file-upload-form" class="uploader">
+            <input id="file-upload" type="file" name="fileUpload" accept="image/*" />
+
+            <label for="file-upload" id="file-drag">
+                <img id="file-image" src="#" alt="Preview" class="hidden">
+                <div id="start">
+                    <i class="fa fa-download" aria-hidden="true"></i>
+                    <div>Select a file or drag here</div>
+                    <div id="notimage" class="hidden">Please select an image</div>
+                    <span id="file-upload-btn" class="btn btn-primary">Select a file</span>
+                </div>
+                <div id="response" class="hidden">
+                    <div id="messages"></div>
+                    <button>Search</button>
+
+                </div>
+            </label>
+        </form>
+    </section>
+    {% endblock %}
+    {% block footer %}
+    <section id="sm-banner" class="section-p1">
+        <div class="banner-box">
+            <h4>ซื้อ 1 แถม 1</h4>
+            <h2>Buy 1 Get 1</h2>
+            <span>เริ่มตั้งแต่ 11 กุมภาพันธ์ 2566 - 28 กุมภาพันธ์ 2566 ทุกสาขา</span>
+
+        </div>
+        <div class="banner-box banner-box2">
+            <h4>คอลเล็กชั่นต้อนรับฤดูฝน!</h4>
+            <h2>Fashion for Songkran Festival</h2>
+            <span>เปิดตัวคอลเล็กชั่นวันที่ 19 มิถุนายน 2566</span>
+        </div>
+    </section>
+    <section id="bannertext">
+        <div class="banner-box ">
+            <h2>พิกัดร้าน</h2>
+            <span>1 Village,Kampangsaen Sub-district,</span>
+            <span>Kampangsaen District,Nakhon Pathom,73140</span>
+        </div>
+        <div class="banner-box banner-box2 ">
+            <h2>Street Wear</h2>
+            <h3>Coming soon...</h3>
+        </div>
+        <div class="banner-box banner-box3 ">
+            <h2>SEOSONAL SALE</h2>
+            <h3>Summer Collection -50% OFF</h3>
+        </div>
+    </section>
+    <footer class="section-p1">
+        <div class="content">
+            <div class="left box">
+                <div class="upper">
+                    <div class="topic">เกี่ยวกับเรา</div>
+                    <p>ITM Project: Reverse Image Search for Online Shopping</p>
+                </div>
+                <div class="lower">
+                    <div class="topic">ติดต่อเรา</div>
+                    <div>
+                        <p>1 Village,Kampangsaen Sub-district, Kampangsaen District,Nakhon Pathom,73140</p>
+                        <p>CONTACT PHONE: (+66)02-58741XX</p>
+                        <p>9.00-17.00,Mon - Fri</p>
+                    </div>
+
+                </div>
+            </div>
+            <div class="middle box">
+                <div class="topic">ฝ่ายบริการลูกค้า</div>
+                <div><a href="#">ITM MEMBERSHIP</a></div>
+                <div><a href="#">วิธีการสั่งซื้อ</a></div>
+                <div><a href="#">นโยบาย</a></div>
+                <div><a href="#">คำถามที่พบบ่อย</a></div>
+            </div>
+            <div class="right box">
+                <div class="topic">Secured Payment Gateways</div>
+                <form action="#">
+                    <img src="../../../static/img/pay/pay.png" alt="">
+                    <div class="lower">
+                        <div class="topic">Follow Us</div>
+                        <div class="media-icons">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="bottom">
+            <p>©2023,ITM Project - Reverse Image Search for Online Shopping</p>
+        </div>
+    </footer>
+    {% endblock %}
+    {% block script %}
+    <script src="../../../static/javascript/searchScript.js"></script>
+    {% endblock %}
+</body>
+</body>
+</html>

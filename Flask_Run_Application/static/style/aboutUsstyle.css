@@ -139,7 +139,7 @@ body {
 
 /* home page */
 #hero {
-    background-image: url("img/background.png");
+    background-image: url("../img/background.png");
     height: 92vh;
     width: 100%;
     background-size: cover;
@@ -385,7 +385,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    background-image: url("img/banner/b17.jpg");
+    background-image: url("../img/banner/b17.jpg");
     min-width: 660px;
     height: 50vh;
     background-size: cover;
@@ -393,7 +393,7 @@ body {
     padding: 30px;
 }
 #sm-banner .banner-box2 {
-    background-image: url("img/banner/b10.jpg");
+    background-image: url("../img/banner/b10.jpg");
 }
 #sm-banner h4 {
     color: #fff;
@@ -435,7 +435,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    background-image: url("img/banner/b11.jpg");
+    background-image: url("../img/banner/b11.jpg");
     min-width: 30%;
     height: 30vh;
     background-size: cover;
@@ -448,13 +448,13 @@ body {
     border: 1px solid #088178;
 }
 #bannertext .banner-box2 {
-    background-image: url("img/banner/b4.jpg");
+    background-image: url("../img/banner/b4.jpg");
 }
 #bannertext .banner-box2  h3 {
     color :#ffffff;
 }
 #bannertext .banner-box3 {
-    background-image: url("img/banner/b16.jpg");
+    background-image: url("../img/banner/b16.jpg");
 }
 #bannertext h2{
     color :#fff;
