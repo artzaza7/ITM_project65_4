@@ -38,6 +38,11 @@ p {
     margin: 15px 0 20px 0;
 }
 
+img {
+    height: auto;
+    aspect-ratio: 2 / 2;
+}
+
 .section-p1 {
     padding: 40px 80px;
 }
