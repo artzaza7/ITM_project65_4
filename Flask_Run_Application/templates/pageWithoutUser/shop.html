@@ -37,7 +37,26 @@
         <h2>Summer Clothing Collection</h2>
         <p>ต้อนรับหน้าร้อนด้วยคอลเล็กชันนี้</p>
         <div class="pro-container">
+            {% for row in product %}
             <div class="pro">
+                <img src="{{url_for('static', filename='img_product_into_db/' + row.3)}}" alt="">
+                <div class="des">
+                    <span>{{row.7}}</span>
+                    <h5>{{row.2}}</h5>
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h4>{{row.4}}</h4>
+                </div>
+            </div>
+            {% endfor %}
+
+
+            <!-- <div class="pro">
                 <img src="../../static/img/products/f1.jpg" alt="">
                 <div class="des">
                     <span>UNIQLO</span>
@@ -96,7 +115,7 @@
                     </div>
                     <h4>3,568 THB</h4>
                 </div>
-            </div>
+            </div> -->
         </div>
     </section>
     {% endblock %}

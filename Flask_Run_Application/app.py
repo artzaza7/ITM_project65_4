@@ -74,7 +74,13 @@ def indexWithoutUser():
 
 @app.route("/shopping")
 def shoppingWithoutUser():
-    return render_template('pageWithoutUser/shop.html')
+    conn = openConnection()
+    cur = conn.cursor()
+    sql = "SELECT * FROM `product` NATURAL JOIN product_category"
+    cur.execute(sql)
+    result_product = cur.fetchall()
+    conn.close()
+    return render_template('pageWithoutUser/shop.html', product = result_product)
 
 
 @app.route("/search")
@@ -205,10 +211,13 @@ def adminPageActionAddingProduct(userType_name, user_id):
         product_category = request.form['product_category']
         file_image = request.files['product_image']
         filename = secure_filename(product_name+".jpg")
+
+        # path folder for save img for upload
         file_image.save('D:/ITM_Group4_Reverse_Image_Search_for_Online_Shopping/Flask_Run_Application/static/img_product_into_db/'+ filename)
-        # D:\ITM_Group4_Reverse_Image_Search_for_Online_Shopping\Flask_Run_Application\static\img_product_into_db folder for save img for upload
+        
+        # path folder for save img for call img into database with feature
         folder_path = "D:/ITM_Group4_Reverse_Image_Search_for_Online_Shopping/Flask_Run_Application/static/img_product_into_db/{}".format(filename)
-        feature = extract(folder_path) #r'D:\Arbid_shirt_ (1).jpg'
+        feature = extract(folder_path)
         js = json.dumps(feature.tolist())
         product_vector = js
 
