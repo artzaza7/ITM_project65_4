@@ -58,7 +58,7 @@
                     </div>
                     <h4>{{row.4}}</h4>
                 </div>
-                <a class="fa-solid fa-heart" href="{{url_for('actionFavorite', user_id = data_id, userType_name = data_userType, product_id = row.1)}}" onclick="return confirm('ต้องเพิ่มหรือไม่')"></a>
+                <a class="fa-solid fa-heart" href="{{url_for('actionFavorite', user_id = data_id, userType_name = data_userType, product_id = row.1)}}" onclick="return confirm('ต้องเพิ่มสินค้าชื่นชอบหรือไม่')"></a>
             </div>
             {% endfor %}
 

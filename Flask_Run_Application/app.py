@@ -169,8 +169,6 @@ def signUpLogin():
     return redirect(url_for('signInPage'))
 
 # action adding product
-
-
 @app.route("/<string:userType_name>/<string:user_id>/insert_product", methods=['POST'])
 def adminPageActionAddingProduct(userType_name, user_id):
     if request.method == "POST":
@@ -201,6 +199,72 @@ def adminPageActionAddingProduct(userType_name, user_id):
         con.close()
 
         return redirect(url_for('adminPageProduct', userType_name=userType_name, user_id=user_id))
+    
+@app.route("/<string:userType_name>/<string:user_id>/editProduct/<string:product_id>")
+def adminPageEditProduct(userType_name, user_id, product_id):
+    conn = openConnection()
+    cur = conn.cursor()
+    sql = "SELECT * FROM `product` NATURAL JOIN product_category WHERE product_id = %s"
+    cur.execute(sql, (product_id))
+    result_product = cur.fetchone()
+    conn.close()
+
+    conn = openConnection()
+    cur = conn.cursor()
+    sql = "SELECT * FROM product_category"
+    cur.execute(sql)
+    result_product_category = cur.fetchall()
+    conn.close()
+    return render_template('pageWithUser/Adminpage/Editproduct/editproduct.html', data_id = user_id, data_userType = userType_name, product = result_product, product_category = result_product_category )
+
+@app.route("/<string:userType_name>/<string:user_id>/editProduct/<string:product_id>/<string:old_filename>", methods=['POST'])
+def adminPageActionEditProduct(userType_name, user_id, product_id, old_filename):
+    folder_path = os.path.join("D:/ITM_Group4_Reverse_Image_Search_for_Online_Shopping/Flask_Run_Application/static/img_product_into_db/", old_filename+".jpg")
+    if os.path.exists(folder_path):
+        os.remove(folder_path)
+        # delete old file in database
+    product_name = request.form['product_name']
+    product_color = request.form['product_color']
+    product_cost = request.form['product_cost']
+    product_category = request.form['product_category']
+    file_image = request.files['product_image']
+    filename = secure_filename(product_name+".jpg")
+
+    # path folder for save img for upload
+    file_image.save(
+            'D:/ITM_Group4_Reverse_Image_Search_for_Online_Shopping/Flask_Run_Application/static/img_product_into_db/' + filename)
+
+    # path folder for save img for call img into database with feature
+    folder_path = "D:/ITM_Group4_Reverse_Image_Search_for_Online_Shopping/Flask_Run_Application/static/img_product_into_db/{}".format(
+            filename)
+    feature = extract(folder_path)
+    js = json.dumps(feature.tolist())
+    product_vector = js
+
+    conn = openConnection()
+    cur = conn.cursor()
+    sql = "UPDATE `product` SET `product_name`= %s,`product_img_name`= %s,`product_cost`= %s,`product_vector`= %s,`product_color`= %s,`productCategory_id`= %s WHERE product_id = %s"
+    cur.execute(sql, (product_name, filename, product_cost, product_vector, product_color, product_category, product_id))
+    conn.commit()
+    conn.close()
+
+    return redirect(url_for('adminPageProduct', userType_name = userType_name, user_id = user_id))
+
+@app.route("/<string:userType_name>/<string:user_id>/deleteProduct/<string:product_id>/<string:product_name>")
+def adminPageActionDeleteProduct(userType_name, user_id, product_id, product_name):
+    folder_path = os.path.join("D:/ITM_Group4_Reverse_Image_Search_for_Online_Shopping/Flask_Run_Application/static/img_product_into_db/", product_name+".jpg")
+    if os.path.exists(folder_path):
+        os.remove(folder_path)
+        # delete old file in database
+    conn = openConnection()
+    cur = conn.cursor()
+    sql = "DELETE FROM `product` WHERE product_id = %s"
+    cur.execute(sql, (product_id))
+    conn.commit()
+    conn.close()
+    return redirect(url_for('adminPageProduct', userType_name = userType_name, user_id = user_id))
+
+    
 
 @app.route('/search', methods=['POST'])
 def searchAction():
@@ -321,7 +385,7 @@ def adminPageUser(userType_name, user_id):
     if 'user' in session:
         conn = openConnection()
         cur = conn.cursor()
-        sql = "SELECT * FROM `user` WHERE user_id != %s"
+        sql = "SELECT * FROM `user`  NATURAL JOIN user_type WHERE user_id != %s"
         cur.execute(sql, (user_id))
         result_user = cur.fetchall()
         conn.close()

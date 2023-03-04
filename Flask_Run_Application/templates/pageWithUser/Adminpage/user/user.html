@@ -40,19 +40,21 @@
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                   <tr>
-                    <th>Number</th>
+                    <!-- <th>Number</th> -->
                     <th>Email</th>
                     <th>Firstname</th>
                     <th>Lastname</th>
+                    <th>Type</th>
                   </tr>
                 </thead>
                 <tbody>
                   {% for row in data_user %}
                   <tr>
-                    <td>{{row.0 - 1}}</td>
-                    <td>{{row.1}}</td>
+                    <!-- <td>{{row.0 - 1}}</td> -->
                     <td>{{row.2}}</td>
                     <td>{{row.3}}</td>
+                    <td>{{row.4}}</td>
+                    <td>{{row.6}}</td>
                   </tr>
                   {% endfor %}
                 </tbody>

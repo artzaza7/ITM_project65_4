@@ -40,7 +40,7 @@
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                   <tr>
-                    <th>Product Number</th>
+                    <!-- <th>Product Number</th> -->
                     <th>Product Name</th>
                     <th>Product Image</th>
                     <th>Product Cost</th>
@@ -66,13 +66,13 @@
                   </tr> -->
                   {% for row in data_product %}
                   <tr>
-                    <td>{{row.1}}</td>
+                    <!-- <td>{{row.1}}</td> -->
                     <td>{{row.2}}</td>
                     <td><img src="{{url_for('static', filename='img_product_into_db/' + row.3)}}" alt=""></td>
                     <td>{{row.4}}</td>
                     <td>{{row.6}}</td>
-                    <td><button class="custom-btn btn-1">Edit</button></td>
-                    <td><button class="custom-btn btn-2">Delete</button></td>
+                    <td><button class="custom-btn btn-1"><a href="{{url_for('adminPageEditProduct', userType_name = data_userType, user_id = data_id, product_id = row.1)}}">Edit</a></button></td>
+                    <td><button class="custom-btn btn-2"><a href="{{url_for('adminPageActionDeleteProduct', userType_name = data_userType, user_id = data_id, product_id = row.1, product_name = row.2)}}" onclick="return confirm('ต้องลบสินค้าหรือไม่')">Delete</a></button></td>
                   </tr>
                   {% endfor %}
                   
