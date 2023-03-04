@@ -87,7 +87,11 @@ Reference ในการจัดทำหน้าเว็บไซต์ (�
 
 <h5 align="center">[...About Us...]</h5>
 
-![Design_AboutUs](https://user-images.githubusercontent.com/75871892/221206681-55dc512b-e165-45c1-8754-931b8029c750.jpg)
+![Design_AboutUs_1](https://user-images.githubusercontent.com/125015450/222890431-dc3ca41d-0a78-443a-bc4e-e307516ac9ad.png)
+![Design_AboutUs_2](https://user-images.githubusercontent.com/125015450/222890432-743fd287-eb48-4919-b28a-093eb8a7e485.png)
+![Design_AboutUs_3](https://user-images.githubusercontent.com/125015450/222890429-e11114f3-d819-4064-9c86-b6fd4da411cf.png)
+
+
 
 ---
 ##### _3 การออกแบบฐานข้อมูล_
