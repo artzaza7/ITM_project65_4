@@ -60,6 +60,7 @@
                     </div>
                     <h4>{{row.4}}</h4>
                 </div>
+                <a class="fa-solid fa-trash" href="{{url_for('actionRemoveFavorite', user_id = data_id, userType_name = data_userType, product_id = row.1)}}" onclick="return confirm('ต้องลบหรือไม่')"></a>
             </div>
             {% endfor %}
 

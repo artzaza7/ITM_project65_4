@@ -277,14 +277,39 @@ def searchActionWithUser(userType_name, user_id):
 
     print(listSave)
 
-    for i in listSave[:4]: #best of ...
-        cur.execute(sql,(i))
-        row = cur.fetchall()
-        result = np.append(result,np.array(row),axis=0)
+    if len(listSave) >= 4 :
+        for i in listSave[:4]: #best of ...
+            cur.execute(sql,(i))
+            row = cur.fetchall()
+            result = np.append(result,np.array(row),axis=0)
+    elif len(listSave) >0 and len(listSave) <4:
+        for i in listSave: #best of ...
+            cur.execute(sql,(i))
+            row = cur.fetchall()
+            result = np.append(result,np.array(row),axis=0)
         
     result = tuple(map(tuple, result))
     return render_template('pageWithUser/Userpage/userResultSearch.html', data_userType=userType_name, data_id=user_id, datas=result) 
 
+@app.route('/<string:userType_name>/<string:user_id>/favorite/<string:product_id>')
+def actionFavorite(userType_name, user_id, product_id):
+    conn = openConnection()
+    cur = conn.cursor()
+    sql = "INSERT INTO `favoriteproduct`(`user_id`, `product_id`) VALUES (%s, %s)"
+    cur.execute(sql, (user_id, product_id))
+    conn.commit()
+    conn.close()
+    return redirect(url_for('userPageShopping',  userType_name = userType_name, user_id = user_id))
+
+@app.route('/<string:userType_name>/<string:user_id>/removeFromfavorite/<string:product_id>')
+def actionRemoveFavorite(userType_name, user_id, product_id):
+    conn = openConnection()
+    cur = conn.cursor()
+    sql = "DELETE FROM `favoriteproduct` WHERE user_id = %s AND product_id = %s"
+    cur.execute(sql, (user_id, product_id))
+    conn.commit()
+    conn.close()
+    return redirect(url_for('userPageFavorite',  userType_name = userType_name, user_id = user_id))
 
 
 # =======================================================

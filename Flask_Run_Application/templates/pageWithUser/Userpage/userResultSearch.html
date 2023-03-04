@@ -14,7 +14,7 @@
     {% block css %}
     <link rel="stylesheet" type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
-    <link rel="stylesheet" href="../../static/style/searchPagestyle.css">
+    <link rel="stylesheet" href="../../../static/style/searchPagestyle.css">
     {% endblock %}
 </head>
 <body>
@@ -58,6 +58,7 @@
                     </div>
                     <h4>{{row.4}}</h4>
                 </div>
+                <a class="fa-solid fa-heart" href="{{url_for('actionFavorite', user_id = data_id, userType_name = data_userType, product_id = row.1)}}" onclick="return confirm('ต้องเพิ่มหรือไม่')"></a>
             </div>
             {% endfor %}
 
