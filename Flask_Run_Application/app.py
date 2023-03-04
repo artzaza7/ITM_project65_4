@@ -223,20 +223,65 @@ def searchAction():
 
 @app.route('/<string:userType_name>/<string:user_id>/search', methods=['POST'])
 def searchActionWithUser(userType_name, user_id):
+    conn = openConnection()
+    cur = conn.cursor()
+    # sql = "SELECT * FROM `product` NATURAL JOIN product_category"
+    sql = "SELECT product_id FROM `product` NATURAL JOIN product_category WHERE product_id IN ( SELECT product_id FROM favoriteproduct WHERE user_id = %s)"
+    cur.execute(sql,(user_id))
+    result_product = cur.fetchall()
+    conn.close()
+    # print(result_product)
+    # print(type(result_product))
+    # for save in result_product : 
+    #     print(save)
     file = request.files['fileUpload']
     filename = secure_filename("search.jpg")
     file.save('D:/ITM_Group4_Reverse_Image_Search_for_Online_Shopping/Flask_Run_Application/static/search_upload/'+ filename)
     folder_path = "D:/ITM_Group4_Reverse_Image_Search_for_Online_Shopping/Flask_Run_Application/static/search_upload/{}".format(filename)
     df = searchVector(extract(folder_path))
     id = df['id'].values.tolist()
+    # print(id)
+    # for result_id in id:
+    #     i = 0
+    #     while (i< len(result_product)):
+    #         print(f"result_id {result_id} | save {result_product[i][0]}")
+    #         print(result_product[i][0] == result_id)
+    #         i += 1
     result = np.empty((0, 8))
     con = openConnection()
     cur = con.cursor()
     sql ="SELECT * FROM `product` NATURAL JOIN product_category WHERE product_id = %s"
-    for i in id[:4]: #best of ...
+    # AND product_id NOT IN ( SELECT product_id FROM favoriteproduct WHERE user_id = %s)
+    for save in id :
+        print(save)
+
+    i = 0
+    listSave = []
+    # cur.execute(sql,(id[i]))
+    # row = cur.fetchall()
+    # result = np.append(result,np.array(row),axis=0)
+    while (i<len(id)): #best of ...
+        favorite = False
+        saveID = id[i]
+        y = 0
+        while (y<len(result_product)):
+            print(f"result_prduct = {result_product[y][0]} | id = {id[i]}")
+            print(result_product[y][0] == id[i])
+            if result_product[y][0] == id[i]:
+                favorite = True
+                saveID = id[i]
+            y += 1
+        if not favorite : 
+            listSave.append(saveID)
+        i += 1
+
+    print(listSave)
+
+    for i in listSave[:4]: #best of ...
         cur.execute(sql,(i))
         row = cur.fetchall()
         result = np.append(result,np.array(row),axis=0)
+        
     result = tuple(map(tuple, result))
     return render_template('pageWithUser/Userpage/userResultSearch.html', data_userType=userType_name, data_id=user_id, datas=result) 
 
@@ -292,8 +337,9 @@ def userPageShopping(userType_name, user_id):
     if 'user' in session:
         conn = openConnection()
         cur = conn.cursor()
-        sql = "SELECT * FROM `product` NATURAL JOIN product_category"
-        cur.execute(sql)
+        # sql = "SELECT * FROM `product` NATURAL JOIN product_category"
+        sql = "SELECT * FROM `product` NATURAL JOIN product_category WHERE product_id NOT IN ( SELECT product_id FROM favoriteproduct WHERE user_id = %s)"
+        cur.execute(sql,(user_id))
         result_product = cur.fetchall()
         conn.close()
         return render_template('pageWithUser/Userpage/user.html', data_id=user_id, data_userType=userType_name, product=result_product)
