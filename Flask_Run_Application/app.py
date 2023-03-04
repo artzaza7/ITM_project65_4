@@ -108,10 +108,13 @@ def signUpPage():
 def aboutUsPage():
     return render_template('pageWithoutUser/aboutUs.html')
 
+# @app.route("/resultSearch")
+# def resultSearchPage():
+#     return render_template('pageWithoutUser/resultSearch.html')
+
 # =======================================================
 
 # action
-
 
 @app.route('/logout')
 def logout():
@@ -198,6 +201,27 @@ def adminPageActionAddingProduct(userType_name, user_id):
         con.close()
 
         return redirect(url_for('adminPageProduct', userType_name=userType_name, user_id=user_id))
+
+@app.route('/search', methods=['POST'])
+def searchAction():
+    file = request.files['fileUpload']
+    filename = secure_filename("search.jpg")
+    file.save('D:/ITM_Group4_Reverse_Image_Search_for_Online_Shopping/Flask_Run_Application/static/search_upload/'+ filename)
+    folder_path = "D:/ITM_Group4_Reverse_Image_Search_for_Online_Shopping/Flask_Run_Application/static/search_upload/{}".format(filename)
+    df = searchVector(extract(folder_path))
+    id = df['id'].values.tolist()
+    result = np.empty((0, 8))
+    con = openConnection()
+    cur = con.cursor()
+    sql ="SELECT * FROM `product` NATURAL JOIN product_category WHERE product_id = %s"
+    for i in id[:4]: #best of ...
+        cur.execute(sql,(i))
+        row = cur.fetchall()
+        result = np.append(result,np.array(row),axis=0)
+    result = tuple(map(tuple, result))
+    return render_template('pageWithoutUser/resultSearch.html', datas=result) 
+
+
 
 # =======================================================
 # With User Login
