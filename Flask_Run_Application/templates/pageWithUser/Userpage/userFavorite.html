@@ -2,13 +2,14 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
         {% block title %}
-        ITM | Reverse Image Search | User
+        ITM | Reverse Image Search | User Favorite
         {% endblock %}
     </title>
     {% block css %}
@@ -17,6 +18,7 @@
     <link rel="stylesheet" href="../../../static/style/style.css">
     {% endblock %}
 </head>
+
 <body>
     {% block navbar %}
     <section id="header">
@@ -24,10 +26,10 @@
         <div>
             <ul id="navbar">
                 <!-- <li><a class="active" href="/">หน้าหลัก</a></li> -->
-                <li><a class="active" href="/{{data_userType}}/{{data_id}}/shopping">ร้านค้า</a></li>
+                <li><a href="/{{data_userType}}/{{data_id}}/shopping">ร้านค้า</a></li>
                 <li><a href="/{{data_userType}}/{{data_id}}/search">ค้นหา</a></li>
                 <li><a href="/{{data_userType}}/{{data_id}}/about_us">เกี่ยวกับเรา</a></li>
-                <li><a href="/{{data_userType}}/{{data_id}}/favorite">สินค้าที่ชื่นชอบ</a></li>
+                <li><a class="active" href="/{{data_userType}}/{{data_id}}/favorite">สินค้าที่ชื่นชอบ</a></li>
                 <li><a href="/logout">Logout</a></li>
                 <li><a href="#"><i class="fa-solid fa-user"></i></a></li>
                 <!-- <div class="frame">
@@ -41,7 +43,7 @@
     {% block body %}
     <section id="product1" class="section-p1">
         <h2>Summer Clothing Collection</h2>
-        <p>ต้อนรับหน้าร้อนด้วยคอลเล็กชันนี้</p>
+        <p>สินค้าที่ท่านชื่นชอบก่อนหน้านี้</p>
         <div class="pro-container">
             {% for row in product %}
             <div class="pro">
@@ -199,4 +201,5 @@
     </footer>
     {% endblock %}
 </body>
+
 </html>

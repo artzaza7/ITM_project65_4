@@ -21,13 +21,14 @@
 <body>
     {% block navbar %}
     <section id="header">
-        <a href="/{{data_userType}}/{{data_id}}/shopping"><img src="../static/logo.png" alt=""></a>
+        <a href="/{{data_userType}}/{{data_id}}/shopping"><img src="../../../static/logo.png" alt=""></a>
         <div>
             <ul id="navbar">
                 <!-- <li><a class="active" href="/">หน้าหลัก</a></li> -->
                 <li><a href="/{{data_userType}}/{{data_id}}/shopping">ร้านค้า</a></li>
                 <li><a href="/{{data_userType}}/{{data_id}}/search">ค้นหา</a></li>
                 <li><a class="active" href="/{{data_userType}}/{{data_id}}/about_us">เกี่ยวกับเรา</a></li>
+                <li><a href="/{{data_userType}}/{{data_id}}/favorite">สินค้าที่ชื่นชอบ</a></li>
                 <li><a href="/logout">Logout</a></li>
                 <li><a href="#"><i class="fa-solid fa-user"></i></a></li>
                 <!-- <div class="frame">

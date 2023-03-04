@@ -219,7 +219,26 @@ def searchAction():
         row = cur.fetchall()
         result = np.append(result,np.array(row),axis=0)
     result = tuple(map(tuple, result))
-    return render_template('pageWithoutUser/resultSearch.html', datas=result) 
+    return render_template('pageWithoutUser/resultSearch.html', datas=result)
+
+@app.route('/<string:userType_name>/<string:user_id>/search', methods=['POST'])
+def searchActionWithUser(userType_name, user_id):
+    file = request.files['fileUpload']
+    filename = secure_filename("search.jpg")
+    file.save('D:/ITM_Group4_Reverse_Image_Search_for_Online_Shopping/Flask_Run_Application/static/search_upload/'+ filename)
+    folder_path = "D:/ITM_Group4_Reverse_Image_Search_for_Online_Shopping/Flask_Run_Application/static/search_upload/{}".format(filename)
+    df = searchVector(extract(folder_path))
+    id = df['id'].values.tolist()
+    result = np.empty((0, 8))
+    con = openConnection()
+    cur = con.cursor()
+    sql ="SELECT * FROM `product` NATURAL JOIN product_category WHERE product_id = %s"
+    for i in id[:4]: #best of ...
+        cur.execute(sql,(i))
+        row = cur.fetchall()
+        result = np.append(result,np.array(row),axis=0)
+    result = tuple(map(tuple, result))
+    return render_template('pageWithUser/Userpage/userResultSearch.html', data_userType=userType_name, data_id=user_id, datas=result) 
 
 
 
@@ -292,6 +311,19 @@ def userPageSearch(userType_name, user_id):
 def userPageAboutUs(userType_name, user_id):
     if 'user' in session:
         return render_template('pageWithUser/Userpage/userAboutUs.html', data_id=user_id, data_userType=userType_name)
+    else:
+        return redirect(url_for('signInPage'))
+    
+@app.route("/<string:userType_name>/<string:user_id>/favorite")
+def userPageFavorite(userType_name, user_id):
+    if 'user' in session:
+        conn = openConnection()
+        cur = conn.cursor()
+        sql = "SELECT * FROM `product` NATURAL JOIN product_category WHERE product_id IN ( SELECT product_id FROM favoriteproduct WHERE user_id = %s)"
+        cur.execute(sql, (user_id))
+        result = cur.fetchall()
+        conn.close()
+        return render_template('pageWithUser/Userpage/userFavorite.html', data_id=user_id, data_userType=userType_name, product = result)
     else:
         return redirect(url_for('signInPage'))
 # =======================================================

@@ -1,31 +1,31 @@
 {% extends "index.html" %}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
         {% block title %}
-        ITM | Reverse Image Search | User
+        ITM | Reverse Image Search | Result Search
         {% endblock %}
     </title>
     {% block css %}
     <link rel="stylesheet" type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
-    <link rel="stylesheet" href="../../../static/style/style.css">
+    <link rel="stylesheet" href="../../static/style/searchPagestyle.css">
     {% endblock %}
 </head>
 <body>
     {% block navbar %}
     <section id="header">
-        <a href="/{{data_userType}}/{{data_id}}/shopping"><img src="../../../static/logo.png" alt=""></a>
+        <a href="{{url_for('indexWithoutUser')}}"><img src="../../../static/logo.png" alt=""></a>
         <div>
             <ul id="navbar">
                 <!-- <li><a class="active" href="/">หน้าหลัก</a></li> -->
-                <li><a class="active" href="/{{data_userType}}/{{data_id}}/shopping">ร้านค้า</a></li>
-                <li><a href="/{{data_userType}}/{{data_id}}/search">ค้นหา</a></li>
+                <li><a href="/{{data_userType}}/{{data_id}}/shopping">ร้านค้า</a></li>
+                <li><a class="active" href="/{{data_userType}}/{{data_id}}/search">ค้นหา</a></li>
                 <li><a href="/{{data_userType}}/{{data_id}}/about_us">เกี่ยวกับเรา</a></li>
                 <li><a href="/{{data_userType}}/{{data_id}}/favorite">สินค้าที่ชื่นชอบ</a></li>
                 <li><a href="/logout">Logout</a></li>
@@ -38,12 +38,12 @@
         </div>
     </section>
     {% endblock %}
+
     {% block body %}
     <section id="product1" class="section-p1">
-        <h2>Summer Clothing Collection</h2>
-        <p>ต้อนรับหน้าร้อนด้วยคอลเล็กชันนี้</p>
+        <p>ผลลัพธ์การค้นหา</p>
         <div class="pro-container">
-            {% for row in product %}
+            {% for row in datas %}
             <div class="pro">
                 <img src="{{url_for('static', filename='img_product_into_db/' + row.3)}}" alt="">
                 <div class="des">
@@ -61,12 +61,11 @@
             </div>
             {% endfor %}
 
-
             <!-- <div class="pro">
-                <img src="../../static/img/products/f1.jpg" alt="">
+                <img src="../../static/img/products/ex1.jpg" alt="">
                 <div class="des">
-                    <span>UNIQLO</span>
-                    <h5>Flower Shirt</h5>
+                    <span>ยี่ห้อ</span>
+                    <h5>ชื่อ</h5>
                     <div class="star">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
@@ -74,14 +73,14 @@
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                     </div>
-                    <h4>990 THB</h4>
+                    <h4>ราคา</h4>
                 </div>
             </div>
             <div class="pro">
-                <img src="../../static/img/products/n6.jpg" alt="">
+                <img src="../../static/img/products/ex1.jpg" alt="">
                 <div class="des">
-                    <span>Lacoste</span>
-                    <h5>Men’s Slim Fit Stretch Cotton Shorts</h5>
+                    <span>ยี่ห้อ</span>
+                    <h5>ชื่อ</h5>
                     <div class="star">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
@@ -89,14 +88,14 @@
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                     </div>
-                    <h4>2,340 THB</h4>
+                    <h4>ราคา</h4>
                 </div>
             </div>
             <div class="pro">
-                <img src="../../static/img/products/s1.jpg" alt="">
+                <img src="../../static/img/products/ex1.jpg" alt="">
                 <div class="des">
-                    <span>NIKE</span>
-                    <h5>Jordan 1 Retro High Travis Scott</h5>
+                    <span>ยี่ห้อ</span>
+                    <h5>ชื่อ</h5>
                     <div class="star">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
@@ -104,14 +103,14 @@
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                     </div>
-                    <h4>25,390 THB</h4>
+                    <h4>ราคา</h4>
                 </div>
             </div>
             <div class="pro">
-                <img src="../../static/img/products/f6.jpg" alt="">
+                <img src="../../static/img/products/ex1.jpg" alt="">
                 <div class="des">
-                    <span>CARNIVAL</span>
-                    <h5>SPY x FAMILY T-Shrit</h5>
+                    <span>ยี่ห้อ</span>
+                    <h5>ชื่อ</h5>
                     <div class="star">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
@@ -119,7 +118,67 @@
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                     </div>
-                    <h4>3,568 THB</h4>
+                    <h4>ราคา</h4>
+                </div>
+            </div>
+            <div class="pro">
+                <img src="../../static/img/products/ex1.jpg" alt="">
+                <div class="des">
+                    <span>ยี่ห้อ</span>
+                    <h5>ชื่อ</h5>
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h4>ราคา</h4>
+                </div>
+            </div>
+            <div class="pro">
+                <img src="../../static/img/products/ex1.jpg" alt="">
+                <div class="des">
+                    <span>ยี่ห้อ</span>
+                    <h5>ชื่อ</h5>
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h4>ราคา</h4>
+                </div>
+            </div>
+            <div class="pro">
+                <img src="../../static/img/products/ex1.jpg" alt="">
+                <div class="des">
+                    <span>ยี่ห้อ</span>
+                    <h5>ชื่อ</h5>
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h4>ราคา</h4>
+                </div>
+            </div>
+            <div class="pro">
+                <img src="../../static/img/products/ex1.jpg" alt="">
+                <div class="des">
+                    <span>ยี่ห้อ</span>
+                    <h5>ชื่อ</h5>
+                    <div class="star">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h4>ราคา</h4>
                 </div>
             </div> -->
         </div>
@@ -197,6 +256,9 @@
             <p>©2023,ITM Project - Reverse Image Search for Online Shopping</p>
         </div>
     </footer>
+    {% endblock %}
+    {% block script %}
+    <script src="static/javascript/searchScript.js"></script>
     {% endblock %}
 </body>
 </html>

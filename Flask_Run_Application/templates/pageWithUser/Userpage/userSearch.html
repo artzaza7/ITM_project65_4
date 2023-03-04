@@ -20,13 +20,14 @@
 <body>
     {% block navbar %}
     <section id="header">
-        <a href="/{{data_userType}}/{{data_id}}/shopping"><img src="../static/logo.png" alt=""></a>
+        <a href="/{{data_userType}}/{{data_id}}/shopping"><img src="../../../static/logo.png" alt=""></a>
         <div>
             <ul id="navbar">
                 <!-- <li><a class="active" href="/">หน้าหลัก</a></li> -->
                 <li><a href="/{{data_userType}}/{{data_id}}/shopping">ร้านค้า</a></li>
                 <li><a class="active" href="/{{data_userType}}/{{data_id}}/search">ค้นหา</a></li>
                 <li><a href="/{{data_userType}}/{{data_id}}/about_us">เกี่ยวกับเรา</a></li>
+                <li><a href="/{{data_userType}}/{{data_id}}/favorite">สินค้าที่ชื่นชอบ</a></li>
                 <li><a href="/logout">Logout</a></li>
                 <li><a href="#"><i class="fa-solid fa-user"></i></a></li>
                 <!-- <div class="frame">
@@ -43,7 +44,7 @@
         <p class="lead">ใส่รูปเสื้อที่ต้องการหาผลลัพธ์ที่ใกล้เคียง</p>
 
         <!-- Upload  -->
-        <form id="file-upload-form" class="uploader">
+        <form id="file-upload-form" class="uploader" action="{{url_for('searchActionWithUser', userType_name = data_userType, user_id = data_id)}}" method="POST" enctype="multipart/form-data">
             <input id="file-upload" type="file" name="fileUpload" accept="image/*" />
 
             <label for="file-upload" id="file-drag">
