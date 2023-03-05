@@ -4,6 +4,18 @@
 # ITM Project: Reverse Image Search for Online Shopping
 **:bulb: Project นี้เป็นส่วนหนึ่งของรายวิชา Management of Information Technology 02204372-60 :bulb:**
 
+> ## :gear: การ setup Environment สำหรับโปรเจค :gear:
+1. การลง library ที่ใช้ในการทำโปรเจค
+    -
+    -
+2. ทำการ Clone ตัว Repository
+3. การนำฐานข้อมูลลงในตัว XAMPP
+    - ทำการสร้างฐานข้อมูลใน http://localhost/phpmyadmin/ ตั้งชื่อ database ว่า itm_database
+    - import : file "itm_databaseVfinal.sql" ใน folder: Database
+
+4. ทำการเปลี่ยน path ตามความต้องการใน file "app.py" *path ทั้งหมดต้องอยู่ใน folder: Flask_Run_Application*
+5. ทำการ run file "app.py" ใน folder: Flask_Run_Appliction
+
 > ## :man: สมาชิกภายในทีม :man:
 
 | ชื่อ | หน้าที่ |
@@ -17,13 +29,13 @@
 
 - [x] I. วางแผนการทำงานโครงการ
 - [x] II. การออกแบบเว็บไซต์
-- [x] III. การออกแบบฐานข้อมูล **_(อยู่ในกระบวนการ)_** 
-- [x] IV. สร้างฐานข้อมูล **_(อยู่ในกระบวนการ)_** 
-- [x] V. พัฒนาโครงสร้างเว็บไซต์ **_(อยู่ในกระบวนการ)_** 
-- [x] VI. รวบรวม Dataset และ Pre-process **_(อยู่ในกระบวนการ)_** 
-- [x] VII. Train Model AI / Evaluate **_(อยู่ในกระบวนการ)_** 
-- [ ] VIII. นำ Model AI เข้าเว็บไซต์ 
-- [ ] IX. ทดสอบการทำงานโดยรวม 
+- [x] III. การออกแบบฐานข้อมูล 
+- [x] IV. สร้างฐานข้อมูล
+- [x] V. พัฒนาโครงสร้างเว็บไซต์
+- [x] VI. รวบรวม Dataset และ Pre-process
+- [x] VII. Train Model AI / Evaluate 
+- [x] VIII. นำ Model AI เข้าเว็บไซต์ 
+- [x] IX. ทดสอบการทำงานโดยรวม **_(อยู่ในกระบวนการ)_** 
 
 > ## :clipboard: รายละเอียดแต่ละงาน :clipboard:
 
@@ -114,7 +126,7 @@ Prototype 3
 ---
 ##### _4 สร้างฐานข้อมูล_
 
-Database (ไฟล์ : itm_database / :file_folder: Database/itm_database.sql 
+Database (ไฟล์ : itm_database / :file_folder: Database/itm_database.sql) 
 
 
 ![SQL_Image](https://user-images.githubusercontent.com/75871892/218263682-1701a9fe-3509-4062-b6b3-f5b0caac6220.jpg)
@@ -171,6 +183,8 @@ Code ของเว็บไซค์ อยู่ใน :file_folder: WebProto
 
 ---
 ##### _6 รวบรวม Dataset และ Pre-process_
+นำตัว Dataset ทั้งหมดมาจากตัวของ เว็บ kaggle
+
 | **_Class_** | **_จำนวน_** | **_Source_** |
 | :-------------: | :-------------: |  ------------- |
 | **Shirt** | 1993 | [Shirt Dataset](https://www.kaggle.com/datasets/sunnykusawa/tshirts?resource=download) |
@@ -182,4 +196,33 @@ Code ของเว็บไซค์ อยู่ใน :file_folder: WebProto
 
 ---
 ##### _7 Train Model AI / Evaluate_
+
+---
+##### _8 นำ Model AI เข้าเว็บไซต์_
+การใช้ flask ร่วมกัน keras ในการ Load model เข้ามาร่วมทำงาน
+
+```python
+model = keras.models.load_model('D:/ITM_Group4_Reverse_Image_Search_for_Online_Shopping/Model/preweight/efficientnet.h5', custom_objects={'KerasLayer': hub.KerasLayer})
+
+model.summary()
+```
+
+ยังมี library อื่นๆที่เกี่ยวข้องอีกตามนี้
+```python
+from werkzeug.utils import secure_filename
+import json
+import pandas as pd
+from scipy.spatial import distance
+from PIL import Image
+from tensorflow import keras
+import tensorflow_hub as hub
+import tensorflow as tf
+import numpy as np
+import os
+from flask import Flask, render_template, request, redirect, url_for, session
+from werkzeug.security import generate_password_hash, check_password_hash
+import pymysql
+```
+---
+##### _9 ทดสอบการทำงานโดยรวม_
 
