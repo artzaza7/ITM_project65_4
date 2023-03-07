@@ -135,7 +135,10 @@ def signInLogin():
         sql = "SELECT * FROM `user` NATURAL JOIN `user_type` WHERE user.user_email = %s"
         cur.execute(sql, (email))
         result = cur.fetchone()
-
+        # if result = none return to sign in page
+        if result == None :
+            return redirect(url_for('signInPage'))
+        # 
         userType = result[6]
         conn.close()
         if result and check_password_hash(result[5], password):
