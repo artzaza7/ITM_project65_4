@@ -42,6 +42,7 @@
                   <tr>
                     <!-- <th>Product Number</th> -->
                     <th>Product Name</th>
+                    <th>Product Category</th>
                     <th>Product Image</th>
                     <th>Product Cost</th>
                     <th>Product Color</th>
@@ -66,8 +67,8 @@
                   </tr> -->
                   {% for row in data_product %}
                   <tr>
-                    <!-- <td>{{row.1}}</td> -->
                     <td>{{row.2}}</td>
+                    <td>{{row.7}}</td>
                     <td><img src="{{url_for('static', filename='img_product_into_db/' + row.3)}}" alt=""></td>
                     <td>{{row.4}}</td>
                     <td>{{row.6}}</td>
