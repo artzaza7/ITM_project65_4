@@ -6,8 +6,15 @@
 
 > ## :gear: การ setup Environment สำหรับโปรเจค :gear:
 1. การลง library ที่ใช้ในการทำโปรเจค
-    -
-    -
+    - ```pip install flask```
+    - ```pip install PyMySQL```
+    - ```pip install tensorflow```
+    - ```pip install pandas```
+    - ```pip install Ponytile```
+    - หากมีปัญหา 
+        1. Downgrade the protobuf package to 3.20.x or lower.
+        2. Set PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION=python (but this will use pure-Python parsing and will be much slower).
+        ใช้งาน  ```pip install protobuf==3.20.*```
 2. ทำการ Clone ตัว Repository
 3. การนำฐานข้อมูลลงในตัว XAMPP
     - ทำการสร้างฐานข้อมูลใน http://localhost/phpmyadmin/ ตั้งชื่อ database ว่า itm_database
@@ -37,7 +44,7 @@
 - [x] VIII. นำ Model AI เข้าเว็บไซต์ 
 - [x] IX. ทดสอบการทำงานโดยรวม **_(อยู่ในกระบวนการ)_** 
 
-> ## :clipboard: รายละเอียดแต่ละงาน :clipboard:
+> ## :clipboarC: รายละเอียดแต่ละงาน :clipboarC:
 
 ##### _1 วางแผนการทำงานโครงการ_
 
@@ -202,7 +209,7 @@ Code ของเว็บไซค์ อยู่ใน :file_folder: WebProto
 การใช้ flask ร่วมกัน keras ในการ Load model เข้ามาร่วมทำงาน
 
 ```python
-model = keras.models.load_model('D:/ITM_Group4_Reverse_Image_Search_for_Online_Shopping/Model/preweight/efficientnet.h5', custom_objects={'KerasLayer': hub.KerasLayer})
+model = keras.models.load_model('C:/ITM_Group4_Reverse_Image_Search_for_Online_Shopping/Model/preweight/efficientnet.h5', custom_objects={'KerasLayer': hub.KerasLayer})
 
 model.summary()
 ```
