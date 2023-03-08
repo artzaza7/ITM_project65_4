@@ -170,7 +170,7 @@ def signUpLogin():
     cur.execute(sql, (email, firstname, lastname, hashed_password, user))
     conn.commit()
     conn.close()
-    flash("Register Success")
+    flash("Register Success", "success")
     # INSERT INTO `user`(`user_id`, `user_email`, `user_fname`, `user_lname`, `user_password`, `userType_id`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]','[value-6]')
     return redirect(url_for('signInPage'))
 
@@ -203,7 +203,7 @@ def adminPageActionAddingProduct(userType_name, user_id):
                     product_vector, product_color, product_category))
         con.commit()
         con.close()
-
+        flash("Adding product success", "success")
         return redirect(url_for('adminPageProduct', userType_name=userType_name, user_id=user_id))
     
 @app.route("/<string:userType_name>/<string:user_id>/editProduct/<string:product_id>")
@@ -258,7 +258,7 @@ def adminPageActionEditProduct(userType_name, user_id, product_id, old_filename)
 
 @app.route("/<string:userType_name>/<string:user_id>/deleteProduct/<string:product_id>/<string:product_name>")
 def adminPageActionDeleteProduct(userType_name, user_id, product_id, product_name):
-    folder_path = os.path.join("D:/ITM_Group4_Reverse_Image_Search_for_Online_Shopping/Flask_Run_Application/static/img_product_into_db/", product_name+".jpg")
+    folder_path = os.path.join("D:/ITM_Group4_Reverse_Image_Search_for_Online_Shopping/Flask_Run_Application/static/img_product_into_db/", product_name)
     if os.path.exists(folder_path):
         os.remove(folder_path)
         # delete old file in database
@@ -268,6 +268,7 @@ def adminPageActionDeleteProduct(userType_name, user_id, product_id, product_nam
     cur.execute(sql, (product_id))
     conn.commit()
     conn.close()
+    flash("Delete product success", "success")
     return redirect(url_for('adminPageProduct', userType_name = userType_name, user_id = user_id))
 
     
