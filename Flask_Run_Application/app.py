@@ -137,7 +137,7 @@ def signInLogin():
         result = cur.fetchone()
         # if result = none return to sign in page
         if result == None :
-            flash("Don't have this User in database")
+            flash("Don't have this User in database", "danger")
             return redirect(url_for('signInPage'))
         # 
         userType = result[6]
@@ -150,7 +150,7 @@ def signInLogin():
             elif (userType == "USER"):
                 return redirect(url_for('userPageShopping', userType_name=result[6], user_id=result[1]))
         else:
-            flash("Please check your password")
+            flash("Please check your password", "warning")
             return redirect(url_for('signInPage'))
     else:
         return redirect(url_for('signInPage'))
