@@ -8,7 +8,7 @@ import tensorflow_hub as hub
 import tensorflow as tf
 import numpy as np
 import os
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session, flash
 from werkzeug.security import generate_password_hash, check_password_hash
 import pymysql
 
@@ -137,6 +137,7 @@ def signInLogin():
         result = cur.fetchone()
         # if result = none return to sign in page
         if result == None :
+            flash("Don't have this User in database")
             return redirect(url_for('signInPage'))
         # 
         userType = result[6]
@@ -149,6 +150,7 @@ def signInLogin():
             elif (userType == "USER"):
                 return redirect(url_for('userPageShopping', userType_name=result[6], user_id=result[1]))
         else:
+            flash("Please check your password")
             return redirect(url_for('signInPage'))
     else:
         return redirect(url_for('signInPage'))
@@ -168,6 +170,7 @@ def signUpLogin():
     cur.execute(sql, (email, firstname, lastname, hashed_password, user))
     conn.commit()
     conn.close()
+    flash("Register Success")
     # INSERT INTO `user`(`user_id`, `user_email`, `user_fname`, `user_lname`, `user_password`, `userType_id`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]','[value-6]')
     return redirect(url_for('signInPage'))
 
