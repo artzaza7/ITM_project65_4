@@ -130,6 +130,10 @@ Prototype 3
 
 ![ER_Diagram_3](https://user-images.githubusercontent.com/75871892/221345499-b73526d5-31cd-4bc9-b7ef-470346545301.jpg)
 
+**Final**
+
+![ER_Diagram_4](https://user-images.githubusercontent.com/75871892/224894589-21ff49d9-77f1-428d-9d32-ad0a64cfe37c.jpg)
+
 ---
 ##### _4 สร้างฐานข้อมูล_
 
@@ -141,6 +145,12 @@ Database (ไฟล์ : itm_database / :file_folder: Database/itm_database.sql)
 ![SQL_Image_2](https://user-images.githubusercontent.com/75871892/219265339-720c756f-f94a-4a83-9a9e-6072a95fcc9a.jpg)
 
 ![SQL_Image_3](https://user-images.githubusercontent.com/75871892/221345500-0450f072-0904-408e-9618-f6ec07eec9e6.jpg)
+
+**Final**
+
+![SQL_Image_4](https://user-images.githubusercontent.com/75871892/224895139-abaab455-a820-4f61-8d01-864024fb7609.jpg)
+
+
 
 
 ---
@@ -232,4 +242,9 @@ import pymysql
 ```
 ---
 ##### _9 ทดสอบการทำงานโดยรวม_
-
+- [x] Admin สามารถ CRUD ตัวของสินค้าทั้งหมดได้
+- [x] เมื่อทำการ Create สินค้าใหม่ๆเข้าระบบ ภาพก็จะถูก Save เข้าไป Local Folder
+- [x] เมื่อทำการ Delete สินค้านั้นๆอกจากระบบ ภาพก็จะถูก Delete
+ออกจาก Local Folder
+- [x] Unknown User สามารถสมัครสมาชิกเป็นสมาชิกของเว็บได้ และข้อมูลจะถูกเก็บเข้าฐานข้อมูล MySQL
+- [x] User สามารถเพิ่มสินค้าที่ชื่นชอบได้ โดยข้อมูลจะถูกเก็บเข้าฐานข้อมูล MySQL
